@@ -53,7 +53,7 @@ public class webCrawler {
 
             String htmlText = readUrl(removed);
 
-            //grabbing urls in the form of http(s)://testwebsite.com
+            //grabbing urls in the form of http(s)://test-website.com
             String regex= "http(s)?:\\/\\/www.\\w*.com";
             Pattern pattern = Pattern.compile(regex);
             Matcher m = pattern.matcher(htmlText);
@@ -70,7 +70,6 @@ public class webCrawler {
 
             }
         }
-
 
     }
 
