@@ -1,1 +1,5 @@
-Initial commit
+Repo to hold various graph algorithms such as:
+-BFS
+-DFS
+-Shortest Path
+Along with this some clever application of the algorithms
