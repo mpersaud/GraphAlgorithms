@@ -38,5 +38,7 @@ public class Main {
 
         DFS dfs = new DFS();
         dfs.dfsIterative(vertices[0]);
+        System.out.println();
+        dfs.dfs(vertices[0]);
     }
 }

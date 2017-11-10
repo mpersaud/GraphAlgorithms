@@ -16,16 +16,22 @@ public class DFS {
         stack.add(root);
         while(!stack.isEmpty()){
             Vertex popped = stack.pop();
-            System.out.println(popped.getVertexName());
+            System.out.print(popped.getVertexName()+" ");
             for(Vertex v: popped.getNeighbhors()){
                 if(!list.contains(v)){
                     stack.add(v);
                     list.add(v);
                 }
-
             }
         }
+    }
+    public void dfs(Vertex root){
+        root.setVisited(true);
 
+        System.out.print(root.getVertexName()+" ");
 
+        for(Vertex v:root.getNeighbhors()){
+            if(!v.isVisited()) dfs(v);
+        }
     }
 }
