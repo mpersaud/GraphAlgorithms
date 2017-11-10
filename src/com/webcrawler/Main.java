@@ -5,6 +5,5 @@ public class Main {
         webCrawler crawler= new webCrawler();
         //example website
         crawler.findConnectedSites("https://www.nbc.com");
-
     }
 }
