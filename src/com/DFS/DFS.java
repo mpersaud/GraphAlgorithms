@@ -18,7 +18,7 @@ public class DFS {
         while(!stack.isEmpty()){
             Vertex popped = stack.pop();
             System.out.print(popped.getVertexName()+" ");
-            //Collections.reverse(popped.getNeighbhors());
+            Collections.reverse(popped.getNeighbhors());
             for(Vertex v: popped.getNeighbhors()){
                 if(!list.contains(v)){
                     stack.add(v);
