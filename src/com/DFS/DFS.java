@@ -27,7 +27,6 @@ public class DFS {
     }
     public void dfs(Vertex root){
         root.setVisited(true);
-
         System.out.print(root.getVertexName()+" ");
 
         for(Vertex v:root.getNeighbhors()){
