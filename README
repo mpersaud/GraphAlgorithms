@@ -1,5 +1,5 @@
 Repo to hold various graph algorithms such as:
 -BFS
 -DFS
--Shortest Path
+-Dijkstra
 Along with this some clever application of the algorithms
