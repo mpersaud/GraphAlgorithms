@@ -6,6 +6,6 @@ public class graphNode {
 
     graphNode(int id){
         this.id=id;
-
+        next=null;
     }
 }
