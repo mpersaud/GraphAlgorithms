@@ -50,7 +50,6 @@ public class webCrawler {
 
         while(!queue.isEmpty()){
             String removed= queue.remove();
-
             String htmlText = readUrl(removed);
 
             //grabbing urls in the form of http(s)://test-website.com
