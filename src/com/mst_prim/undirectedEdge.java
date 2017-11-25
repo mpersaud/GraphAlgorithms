@@ -13,7 +13,8 @@ public class undirectedEdge {
         this.cost=cost;
     }
 
-    public void printEdge(){
-        System.out.println("/TODO");
+    public void printEdge() {
+        System.out.printf("<%d,%d,%d>",ni,nj,cost);
     }
+
 }
