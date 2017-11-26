@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 public class primMST {
 
+    final int SET_A =1;
+    final int SET_B =2;
     int numNodes;
     int totalMSTCost;
     undirectedEdge edgeListHead;
@@ -13,17 +15,16 @@ public class primMST {
     public primMST(int numNodes){
         this.numNodes = numNodes;
         inWhichSet = new int[numNodes];
-        Arrays.fill(inWhichSet,2);
-        inWhichSet[0]=1;
+        Arrays.fill(inWhichSet,SET_B);
+        inWhichSet[0]=SET_A;
         totalMSTCost=0;
         edgeListHead = new undirectedEdge(0,0,0);
         MSTofG = new undirectedEdge(0,0,0);
     }
 
     public void insertEdge(undirectedEdge edge){
-        //TODO:implement insert sort
         undirectedEdge temp = edgeListHead;
-        while(temp.next!=null&&temp.next.cost<=edge.cost){
+        while(temp.next!=null&&temp.next.cost<=edge.cost ){
             temp=temp.next;
         }
         edge.next=temp.next;
@@ -31,22 +32,19 @@ public class primMST {
 
     }
     public undirectedEdge removeHead(){
-        //TODO: remove head
+        if(edgeListHead.next==null)return null;
         undirectedEdge e = edgeListHead.next;
         edgeListHead.next=e.next;
         return e;
 
     }
     public void pushEdge(undirectedEdge edge){
-        //TODO
         edge.next=MSTofG.next;
         MSTofG.next=edge;
 
     }
-
     public void move2SetA(graphNode node){
-        //TODO
-
+        //TODO maybe
 
     }
     public void printSet(){
@@ -60,7 +58,7 @@ public class primMST {
     }
     public boolean sameSet(){
         for (int i :inWhichSet){
-            if (i==2)return false;
+            if (i==SET_B)return false;
         }
         return true;
     }
@@ -75,6 +73,29 @@ public class primMST {
 
         System.out.print("NULL\n");
     }
+    public  void remove (){
+        undirectedEdge removedEdge = edgeListHead.next;
+        undirectedEdge prevNode = edgeListHead.next;
 
+        while(removedEdge!=null) {
 
+            if(inWhichSet[removedEdge.ni-1]!=inWhichSet[removedEdge.nj-1]){
+                totalMSTCost+=removedEdge.cost;
+                if(inWhichSet[removedEdge.ni-1]==1)inWhichSet[removedEdge.nj-1]=1;
+                else inWhichSet[removedEdge.ni-1]=1;
+                prevNode.next=removedEdge.next;
+                pushEdge(new undirectedEdge(removedEdge.ni,removedEdge.nj,removedEdge.cost));
+                break;
+            }
+            prevNode=removedEdge;
+            removedEdge=removedEdge.next;
+        }
+
+    }
+
+    public void primAlgorithm() {
+        while(!sameSet()) {
+            remove();
+        }
+    }
 }

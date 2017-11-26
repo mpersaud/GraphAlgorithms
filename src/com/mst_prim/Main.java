@@ -21,29 +21,14 @@ public class Main{
                 undirectedEdge eIn = new undirectedEdge(i,j,cost);
                 undirectedEdge eOut = new undirectedEdge(j,i,cost);
                 mst.insertEdge(eIn);
-                //mst.printList(mst.edgeListHead);
-                mst.insertEdge(eOut);
+                mst.printList(mst.edgeListHead);
+                //mst.insertEdge(eOut);
                 //mst.printList(mst.edgeListHead);
 
             }
-            while(!mst.sameSet()) {
-                undirectedEdge removedEdge = mst.removeHead();
-                if (mst.inWhichSet[removedEdge.ni-1] == mst.inWhichSet[removedEdge.nj-1]) {
-                    continue;
-                }
-                else{
-                    mst.pushEdge(removedEdge);
-                    mst.totalMSTCost+=removedEdge.cost;
-                    if(mst.inWhichSet[removedEdge.ni-1]==1){
-                        mst.inWhichSet[removedEdge.nj-1]=1;
-                    }
-                    else{
-                        mst.inWhichSet[removedEdge.ni-1]=1;
-                    }
-                }
-                mst.printSet();
+            System.out.println();
+            mst.primAlgorithm();
 
-            }
             mst.printList(mst.MSTofG);
             System.out.println("TOTAL COST:"+mst.totalMSTCost);
 
@@ -54,5 +39,8 @@ public class Main{
         System.out.println("finish him!");
 
     }
+
+
+
 
 }
