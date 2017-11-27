@@ -81,8 +81,11 @@ public class primMST {
 
             if(inWhichSet[removedEdge.ni-1]!=inWhichSet[removedEdge.nj-1]){
                 totalMSTCost+=removedEdge.cost;
-                if(inWhichSet[removedEdge.ni-1]==1)inWhichSet[removedEdge.nj-1]=1;
-                else inWhichSet[removedEdge.ni-1]=1;
+                if(inWhichSet[removedEdge.ni-1]==1)
+                    inWhichSet[removedEdge.nj-1]=1;
+                else
+                    inWhichSet[removedEdge.ni-1]=1;
+
                 prevNode.next=removedEdge.next;
                 pushEdge(new undirectedEdge(removedEdge.ni,removedEdge.nj,removedEdge.cost));
                 break;
