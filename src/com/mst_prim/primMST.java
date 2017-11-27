@@ -16,8 +16,8 @@ public class primMST {
         this.numNodes = numNodes;
         inWhichSet = new int[numNodes];
         Arrays.fill(inWhichSet,SET_B);
-        inWhichSet[0]=SET_A;
-        totalMSTCost=0;
+        inWhichSet[0] = SET_A;
+        totalMSTCost = 0;
         edgeListHead = new undirectedEdge(0,0,0);
         MSTofG = new undirectedEdge(0,0,0);
     }
@@ -29,33 +29,32 @@ public class primMST {
         }
         edge.next=temp.next;
         temp.next=edge;
-
     }
+
     public undirectedEdge removeHead(){
         if(edgeListHead.next==null)return null;
         undirectedEdge e = edgeListHead.next;
         edgeListHead.next=e.next;
         return e;
-
     }
+
     public void pushEdge(undirectedEdge edge){
         edge.next=MSTofG.next;
         MSTofG.next=edge;
-
     }
-    public void move2SetA(graphNode node){
-        //TODO maybe
 
+    public void move2SetA(int node){
+        inWhichSet[node-1] = SET_A;
     }
+
     public void printSet(){
         System.out.print("Set: [");
         for(Integer i : inWhichSet){
             System.out.print(i+" ");
         }
         System.out.println("]");
-
-
     }
+
     public boolean sameSet(){
         for (int i :inWhichSet){
             if (i==SET_B)return false;
@@ -70,27 +69,24 @@ public class primMST {
             System.out.print(" -> ");
             temp=temp.next;
         }
-
         System.out.print("NULL\n");
     }
-    public  void remove (){
+
+    public void remove (){
         undirectedEdge removedEdge = edgeListHead.next;
-        undirectedEdge prevNode = edgeListHead.next;
 
         while(removedEdge!=null) {
-
             if(inWhichSet[removedEdge.ni-1]!=inWhichSet[removedEdge.nj-1]){
                 totalMSTCost+=removedEdge.cost;
-                if(inWhichSet[removedEdge.ni-1]==1)
-                    inWhichSet[removedEdge.nj-1]=1;
+                if (inWhichSet[removedEdge.ni-1]==1)
+                    move2SetA(removedEdge.nj);
                 else
-                    inWhichSet[removedEdge.ni-1]=1;
+                    move2SetA(removedEdge.ni);
 
-                prevNode.next=removedEdge.next;
                 pushEdge(new undirectedEdge(removedEdge.ni,removedEdge.nj,removedEdge.cost));
                 break;
             }
-            prevNode=removedEdge;
+
             removedEdge=removedEdge.next;
         }
 
